@@ -1,3 +1,3 @@
 # AllegroNotify
-Simple Allegro.pl new auction monitor.
-Written in Python using Allegro.pl WebAPI.
+Simple Allegro.pl new auctions monitor.
+Written in Python 3 using Allegro.pl WebAPI.
