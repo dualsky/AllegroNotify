@@ -29,6 +29,7 @@ c.execute('''CREATE TABLE requests
               price_min     text,
               price_max     text,
               used          text,
+              damaged       text,
               foreign key(user_id) REFERENCES users(id))''')
 
 c.execute('''CREATE TABLE categories
