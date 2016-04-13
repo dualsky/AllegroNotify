@@ -1,15 +1,8 @@
 import sqlite3 as lite
 import yaml
 
-try:
-    with open("../../resources/settings.yml", "r") as s_file:
-        settings = yaml.load(s_file)
-except yaml.YAMLError:
-    logger.error("Cannot parse settings file.")
-    sys.exit(-1)
-except IOError:
-    logger.error("Cannot open settings file.")
-    sys.exit(-1)
+with open("../../resources/settings.yml", "r") as s_file:
+    settings = yaml.load(s_file)
 
 conn = lite.connect("../resources/" + settings["DB_FILE"])
 
