@@ -7,9 +7,9 @@ class SysQueryRequest(SoapNoAuthRequest):
         super().__init__(key, country)
         self._sysvar = sysvar
 
-    def _create_message(self, url):
+    def _create_message(self, ns):
         msg = SoapMessage()
-        s = msg.elementmaker("s", url)
+        s = msg.elementmaker("s", ns)
 
         msg.body = s.DoQuerySysStatusRequest(
             s.sysvar(self._sysvar),

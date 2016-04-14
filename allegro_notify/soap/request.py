@@ -10,7 +10,7 @@ class SoapRequest:
         msg = self._create_message(ns)
         return client(msg, build_response=Response)
 
-    def _create_message(self, url):
+    def _create_message(self, ns):
         raise NotImplementedError
 
 

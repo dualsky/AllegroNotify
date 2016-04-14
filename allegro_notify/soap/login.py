@@ -9,9 +9,9 @@ class LoginRequset(SoapNoAuthRequest):
         self._pwd_hash = pwd_hash
         self._version = version
 
-    def _create_message(self, url):
+    def _create_message(self, ns):
         msg = SoapMessage()
-        s = msg.elementmaker("s", url)
+        s = msg.elementmaker("s", ns)
 
         msg.body = s.DoLoginEncRequest(
             s.userLogin(self._login),

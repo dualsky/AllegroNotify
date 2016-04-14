@@ -11,9 +11,9 @@ class GetItemListRequset(SoapNoAuthRequest):
         self._price_max = price_max
         self._price_min = price_min
 
-    def _create_message(self, url):
+    def _create_message(self, ns):
         msg = SoapMessage()
-        s = msg.elementmaker("s", url)
+        s = msg.elementmaker("s", ns)
 
         init_body = s.DoGetItemsListRequest(
             s.webapiKey(self._key),
