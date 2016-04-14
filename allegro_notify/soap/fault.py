@@ -1,12 +1,8 @@
 class SoapFault(Exception):
-    def __init__(self, code, string):
-        self._code = code
-        self._string = string
+    def __init__(self, code, desc):
+        super().__init__(code)
+        self._desc = desc
 
     @property
-    def code(self):
-        return self._code
-
-    @property
-    def string(self):
-        return self._string
+    def desc(self):
+        return self._desc

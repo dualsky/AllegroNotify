@@ -1,28 +1,25 @@
 from rinse.client import SoapClient
-from utils.soap_response import Response
+from soap.response import Response
 
 
 class SoapRequest:
-    def __init__(self, url):
-        self._url = url
-
-    def send(self):
-        client = SoapClient(self._url)
-        msg = self._create_message()
+    def send(self, url, ns=None):
+        if ns is None:
+            ns = url
+        client = SoapClient(url)
+        msg = self._create_message(ns)
         return client(msg, build_response=Response)
 
-    def _create_message(self):
+    def _create_message(self, url):
         raise NotImplementedError
 
 
 class SoapAuthRequest(SoapRequest):
-    def __init__(self, url, session):
-        super().__init__(url)
+    def __init__(self, session):
         self._session = session
 
 
 class SoapNoAuthRequest(SoapRequest):
-    def __init__(self, url, key, country):
-        super().__init__(url)
+    def __init__(self, key, country):
         self._key = key
         self._country = country

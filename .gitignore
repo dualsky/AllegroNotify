@@ -1,3 +1,3 @@
-settings.yml
-database.db
+allegro_notify/resources/*
 *__pycache__*
+*.pyc

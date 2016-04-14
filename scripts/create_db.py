@@ -2,12 +2,13 @@ import sqlite3 as lite
 import yaml
 import os
 
-res_path = os.path.join(os.path.dirname(__file__), '..', '..', 'resources')
+res_path = os.path.join(
+    os.path.dirname(__file__), '..', 'allegro_notify/', 'resources/')
 
-with open(res_path + "/settings.yml", "r") as s_file:
+with open(res_path + "settings.yml", "r") as s_file:
     settings = yaml.load(s_file)
 
-conn = lite.connect(res_path + "/" + settings["DB_FILE"])
+conn = lite.connect(res_path + settings["DB_FILE"])
 
 print("Connected to database.")
 c = conn.cursor()
