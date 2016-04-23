@@ -1,6 +1,8 @@
 from rinse.message import SoapMessage
 from soap.request import SoapNoAuthRequest
 
+__all__ = ["SysQueryRequest"]
+
 
 class SysQueryRequest(SoapNoAuthRequest):
     def __init__(self, key, country, sysvar):

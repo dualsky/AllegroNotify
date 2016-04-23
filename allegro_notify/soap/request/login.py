@@ -1,8 +1,10 @@
 from rinse.message import SoapMessage
 from soap.request import SoapNoAuthRequest
 
+__all__ = ["LoginRequest"]
 
-class LoginRequset(SoapNoAuthRequest):
+
+class LoginRequest(SoapNoAuthRequest):
     def __init__(self, key, country, login, pwd_hash, version):
         super().__init__(key, country)
         self._login = login

@@ -1,8 +1,11 @@
 from rinse.message import SoapMessage
 from soap.request import SoapNoAuthRequest
+from soap.response import ItemListResponse
+
+__all__ = ["ItemListRequest"]
 
 
-class GetItemListRequset(SoapNoAuthRequest):
+class ItemListRequest(SoapNoAuthRequest):
     def __init__(self, key, country, title,
                  offer_type="buyNow", price_max=0, price_min=0):
         super().__init__(key, country)
@@ -10,6 +13,10 @@ class GetItemListRequset(SoapNoAuthRequest):
         self._type = offer_type
         self._price_max = price_max
         self._price_min = price_min
+
+    @staticmethod
+    def get_response_class():
+        return ItemListResponse
 
     def _create_message(self, ns):
         msg = SoapMessage()
@@ -39,13 +46,13 @@ class GetItemListRequset(SoapNoAuthRequest):
             offer_body = s.item(
                 s.filterId("offerType"),
                 s.filterValueId(
-                    s.item(self._type.name)
+                    s.item(self._type)
                 )
             )
             filter_body.insert(0, offer_body)
 
         # Price xml
-        if self._price_max > 0 or self_.price_min > 0:
+        if self._price_max > 0 or self._price_min > 0:
             price_body = s.item(
                 s.filterId("price"),
                 s.filterValueRange()
